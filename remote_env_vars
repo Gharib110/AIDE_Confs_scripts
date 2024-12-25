@@ -1,0 +1,9 @@
+# Paths and file names on remote system
+#
+REM_DIR=/var/spool	#parent inst dir
+REM_ARCH=aide.tgz       #remote tarball
+REM_IDIR=aide           #AIDE dir
+REM_CMD=aide            #aide binary
+REM_CONF=aide.conf      #aide config
+REM_ADB=aide.db         #aide DB
+REM_NEWDB=aide.db.new   #--update DB
