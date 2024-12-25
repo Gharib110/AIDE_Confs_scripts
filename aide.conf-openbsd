@@ -1,0 +1,54 @@
+# Set DB locations (database_out is where updated DB is put)
+database=file:/var/spool/config/conf.db
+database_out=file:/var/spool/config/conf.db.new
+
+# Set verbosity (5 and 20 seem to be the only significant settings)
+verbose=20
+
+# For critical files
+H = p+i+n+u+g+s+b+m+c+sha512+rmd160
+
+# Directories that are mutable (ignore link count updates)
+LD = p+i+u+g
+
+# Critical dirs (/etc dealt with below)
+=/$				H
+=/usr$				H
+=/var$				H
+=/tmp$				LD
+=/var/tmp$			LD
+/dev                    	L
+!/dev/[pt]typ[012]$
+
+# Root's homedir
+/root				H
+/root/.ssh/known_hosts		L
+
+# /etc
+=/etc$				L
+/etc/.*				H
+!/etc/ntp.drift$
+!/etc/resolv.conf$
+
+# crontabs
+/var/cron/tabs/.*		H
+/var/cron/atjobs/.*		H
+!/var/cron/tabs/.sock$
+
+# Kernel/boot code
+/bsd				H
+/boot				H
+
+# bin and lib dirs
+/bin				H
+/usr/bin			H
+/usr/local/bin			H
+/sbin				H
+/usr/sbin			H
+/usr/local/sbin			H
+/usr/libexec			H
+/usr/local/libexec		H
+#/usr/X11R6/bin			H
+/usr/lib			H
+/usr/local/lib			H
+#/usr/X11R6/lib			H
