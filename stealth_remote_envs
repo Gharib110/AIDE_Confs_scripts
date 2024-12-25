@@ -1,0 +1,9 @@
+# Paths and file names on remote system
+#
+REM_DIR=/var/spool		# remote location to drop and unpack tarball
+REM_ARCH=conf.tgz		# name of tarball on remote system
+REM_IDIR=config			# directory created by unpacking tarball
+REM_CMD=configure		# name of aide command in unpacked directory
+REM_CONF=system.conf		# name of aide config file on remote system
+REM_ADB=conf.db			# name of aide DB file
+REM_NEWDB=conf.db.new		# name of --update DB file
