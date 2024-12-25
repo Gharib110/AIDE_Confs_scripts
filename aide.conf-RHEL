@@ -1,0 +1,67 @@
+# Set DB locations (database_out is where updated DB is put)
+database=file:/var/spool/config/conf.db
+database_out=file:/var/spool/config/conf.db.new
+
+# Set verbosity (5 and 20 seem to be the only significant settings)
+verbose=20
+
+# For critical files
+H = p+i+n+u+g+s+b+m+c+sha512+rmd160
+
+# Like "L", but for directories where link count can change (/tmp, /var/tmp)
+LD = p+i+u+g
+
+# Critical dirs (/etc dealt with below)
+=/$				H
+=/usr$				H
+=/var$				H
+=/tmp$				LD
+=/var/tmp$			LD
+=/dev$                    	L
+
+# Root's homedir
+/root				H
+/root/.ssh/known_hosts		L
+!/root/.bash_history$
+
+# /etc
+=/etc$				L
+/etc/.*				H
+!/etc/adjtime$
+!/etc/asound.state$
+!/etc/blkid.tab
+!/etc/lvm/.cache$
+!/etc/mtab$
+!/etc/ntp.drift$
+!/etc/prelink.cache$
+!/etc/sysconfig/hwconf$
+
+# crontabs
+/etc/cron.*			H
+/var/spool/cron			H
+
+# Kernel/boot code
+/boot				H
+
+# bin and lib dirs
+/bin				H
+/sbin				H
+/usr/bin			H
+/usr/X11R6/bin			H
+/usr/X11R6/lib/lib.*		H
+/usr/sbin			H
+/usr/kerberos/bin		H
+/usr/kerberos/sbin		H
+/usr/lib/jvm			H
+/usr/local			H
+/lib				H
+/usr/lib/lib.*			H
+
+# content dirs
+/var/www/html			H
+
+/var/named			H
+=/var/named/dev$		L
+!/var/named/chroot/slave$
+!/var/named/chroot/dev/log$
+!/var/named/chroot/var/run
