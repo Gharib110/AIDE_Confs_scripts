@@ -1,0 +1,115 @@
+# Set DB locations (database_out is where updated DB is put)
+database=file:/var/spool/config/conf.db
+database_out=file:/var/spool/config/conf.db.new
+
+# Set verbosity (5 and 20 seem to be the only significant settings)
+verbose=20
+
+# Double checksumming for critical files
+H = p+i+n+u+g+s+b+m+c+sha512+rmd160
+
+# For mutable directories like /tmp
+LD = p+i+u+g
+
+# Critical Directories
+=/$			R
+=/usr$			R
+=/var$			R
+# /tmp is RAM disk, so inode changes on every reboot
+=/tmp$			p+u+g
+=/var/tmp$		LD
+=/var/adm$		L
+=/dev$			L
+=/devices$		L
+
+# Root's homedir
+/\.[A-Za-z0-9].*	H
+/\.ssh/known_hosts$	L
+!/\.dt
+!/\.gconf
+!/\.gnome2
+!/\.mozilla
+!/\.ssh/.*_seed$
+!/\.TTauthority$
+!/\.Xauthority$
+
+# Deal with /etc
+=/etc$			L
+=/etc/cron.d$		L
+=/etc/dfs$		L
+/etc/dumpdates$		L
+/etc/motd$		L
+/etc/passwd$		L
+/etc/rmtab$		L
+/etc/sfw/private	L
+/etc/shadow$		L
+/etc/ttydefs$		L
+/etc/.*			H
+!/etc/lp
+!/etc/.*\.pid$
+!/etc/.syslog_door$
+!/etc/cron.d/FIFO$
+!/etc/coreadm.conf$
+!/etc/dat$
+!/etc/dumpadm.conf$
+!/etc/initpipe$
+!/etc/dfs/sharetab$
+!/etc/dhcpd.leases
+!/etc/mail/statistics$
+!/etc/ntp.drift$
+!/etc/lvm
+!/etc/mnttab$
+!/etc/named/slave$
+!/etc/saf
+!/etc/security/audit_data$
+!/etc/security/dev$
+!/etc/ssh_random_seed$
+!/etc/svc
+!/etc/sysevent
+!/etc/utmppipe$
+
+# Kernel directories
+/kernel			H
+/usr/kernel		H
+!/kernel/drv
+
+# Other bin and lib dirs
+/lib			H
+/opt			H
+/sbin			H
+/usr/X11/bin		H
+/usr/X11/lib		H
+/usr/apache		H
+/usr/apache2		H
+/usr/bin		H
+/usr/ccs/bin		H
+/usr/ccs/lib		H
+/usr/dt/bin		H
+/usr/dt/lib		H
+/usr/j2se		H
+/usr/jdk		H
+/usr/lib		H
+/usr/local/bin		H
+/usr/local/lib		H
+/usr/openwin/bin	H
+/usr/openwin/lib	H
+/usr/openwin/sfw/lib	H
+/usr/perl5		H
+/usr/proc/bin		H
+/usr/sadm		H
+/usr/sbin		H
+/usr/sfw/bin		H
+/usr/sfw/lib		H
+/usr/sfw/sbin		H
+/usr/sfw/sparc-sun-solaris2.10/bin	H
+/usr/sfw/sparc-sun-solaris2.10/lib	H
+/usr/share/lib				H
+/usr/share/webconsole/bin		H
+/usr/share/webconsole/lib		H
+/usr/snadm/bin		H
+/usr/snadm/lib		H
+/usr/vmsys/bin		H
+/usr/vmsys/lib		H
+/usr/xpg4/bin		H
+/usr/xpg4/lib		H
+/usr/xpg6/bin		H
